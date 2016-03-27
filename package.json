@@ -5,21 +5,27 @@
   "main": "grafi-formatter.js",
   "scripts": {
     "test": "node grafi-formatter.test.js",
-    "build": "node_modules/.bin/smash src/_blueprint.js | node_modules/.bin/standard-format - > grafi-formatter.js"
+    "build": "./node_modules/.bin/rollup -f umd -n grafi -o grafi-formatter.js -- ./src/_blueprint.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grafi-tools/grafi-formatter.git"
+    "url": "git+https://github.com/grafijs/grafi-formatter.git"
   },
-  "keywords": ["Grafi", "images", "image", "graphics", "graphic", "canvas"],
+  "keywords": [
+    "grafi",
+    "images",
+    "image",
+    "graphics",
+    "graphic",
+    "canvas"
+  ],
   "author": "The Grafi Project Contributors (http://grafi.tools/)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/grafi-tools/grafi/issues"
+    "url": "https://github.com/grafijs/grafi/issues"
   },
-  "homepage": "https://github.com/grafi-tools/grafi-formatter#readme",
+  "homepage": "https://github.com/grafijs/grafi-formatter#readme",
   "devDependencies": {
-    "smash": "0.0.15",
-    "standard-format": "2.1.1"
+    "rollup": "0.25.6"
   }
 }

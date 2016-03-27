@@ -22,7 +22,7 @@ function ImageData (pixelData, width, height){
       formatter(new Uint8ClampedArray[400], 10, 10)
       // ImageData { data: Uint8ClampedArray[400], width: 10, height: 10, }
  */
-function formatter (pixelData, width, height) {
+export default function formatter (pixelData, width, height) {
   var colorDepth = pixelData.length / (width * height)
 
   // Length of pixelData must be multipul of available pixels (width * height).
