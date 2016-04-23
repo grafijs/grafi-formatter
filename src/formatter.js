@@ -11,6 +11,17 @@ function GrafiImageData (pixelData, width, height){
 }
 
 /**
+  ## Color Depth Checker
+  To maintain simplicity of code, grafi only accepts ImageData in RGBA
+  Length of pixelData must be 4 times as much as available pixels (width * height).
+ */
+function checkColorDepth (pixelData, width, height) {
+  if (pixelData.length / (width * height) !== 4) {
+    throw new Error('data and size of the image does now match')
+  }
+}
+
+/**
   ## formatter
   Internal function used to format pixel data into ImageData object
 
@@ -24,13 +35,8 @@ function GrafiImageData (pixelData, width, height){
       // ImageData { data: Uint8ClampedArray[400], width: 10, height: 10, }
  */
 function formatter (pixelData, width, height) {
-  var colorDepth = pixelData.length / (width * height)
-
-  // Length of pixelData must be multipul of available pixels (width * height).
-  // Maximum color depth allowed is 4 (RGBA)
-  if (colorDepth !== 4) {
-    throw new Error('data and size of the image does now match')
-  }
+  // check the size of data matches
+  checkColorDepth(pixelData, width, height)
 
   if (!(pixelData instanceof Uint8ClampedArray)) {
     throw new Error('pixel data passed is not an Uint8ClampedArray')
