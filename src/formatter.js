@@ -53,7 +53,7 @@ function formatter (pixelData, width, height) {
 
   // If window is available create ImageData using browser API,
   // otherwise call ImageData constructor
-  if (typeof window === 'object' && colorDepth === 4 ) {
+  if (typeof window === 'object') {
     return new window.ImageData(pixelData, width, height)
   }
   return new GrafiImageData(pixelData, width, height)

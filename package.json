@@ -1,7 +1,7 @@
 {
   "name": "grafi-formatter",
   "version": "0.0.1",
-  "description": "",
+  "description": "data formatter for grafi.js",
   "main": "grafi-formatter.js",
   "scripts": {
     "test": "node grafi-formatter.test.js",
