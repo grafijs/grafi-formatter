@@ -15,8 +15,17 @@ function GrafiImageData (pixelData, width, height){
   To maintain simplicity of code, grafi only accepts ImageData in RGBA
   Length of pixelData must be 4 times as much as available pixels (width * height).
  */
-function checkColorDepth (pixelData, width, height) {
-  if (pixelData.length / (width * height) !== 4) {
+function checkColorDepth (dataset, width, height) {
+  var colorDepth
+  if (dataset.width && dataset.height) {
+    // When ImageData object was passed as dataset
+    colorDepth = dataset.data.length / (dataset.width * dataset.height)
+  } else {
+    // When just an array was passed as dataset
+    colorDepth = dataset.length / (width * height)
+  }
+
+  if (colorDepth !== 4) {
     throw new Error('data and size of the image does now match')
   }
 }
