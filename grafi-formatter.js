@@ -3,8 +3,9 @@
     ## ImageData object constructor
     Every return from grafi method is formatted to an ImageData object.
     This constructor is used when `window` is not available.
+    (for example you are using grafi in node)
    */
-  function ImageData (pixelData, width, height) {
+  function GrafiImageData (pixelData, width, height) {
     this.width = width
     this.height = height
     this.data = pixelData
@@ -28,7 +29,7 @@
 
     // Length of pixelData must be multipul of available pixels (width * height).
     // Maximum color depth allowed is 4 (RGBA)
-    if (Math.round(colorDepth) !== colorDepth || colorDepth > 4) {
+    if (colorDepth !== 4) {
       throw new Error('data and size of the image does now match')
     }
 
@@ -36,12 +37,12 @@
       throw new Error('pixel data passed is not an Uint8ClampedArray')
     }
 
-    // If window is avilable create ImageData using browser API,
+    // If window is available create ImageData using browser API,
     // otherwise call ImageData constructor
     if (typeof window === 'object' && colorDepth === 4) {
       return new window.ImageData(pixelData, width, height)
     }
-    return new ImageData(pixelData, width, height)
+    return new GrafiImageData(pixelData, width, height)
   }
 
   var grafi = {}
